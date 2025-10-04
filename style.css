@@ -145,7 +145,7 @@ h2 {
     font-size: 0.9rem;
 }
 
-.maybe {
+.backup {
     background: #FF9800;
     color: white;
     padding: 0.5rem 1rem;
@@ -341,12 +341,50 @@ h2 {
     font-size: 0.8rem;
 }
 
-.maybe-stat {
+.backup-stat {
     background: #FF9800;
     color: white;
     padding: 0.2rem 0.5rem;
     border-radius: 15px;
     font-size: 0.8rem;
+}
+
+.draggable-player {
+    cursor: grab;
+    transition: opacity 0.3s;
+}
+
+.draggable-player:hover {
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.draggable-player.dragging {
+    opacity: 0.5;
+}
+
+.drop-zone {
+    min-height: 50px;
+    transition: background 0.3s;
+}
+
+.drop-zone.drag-over {
+    background: rgba(102, 126, 234, 0.2);
+    border: 2px dashed #667eea;
+}
+
+.save-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.save-btn:hover {
+    background: #45a049;
 }
 
 .total-stat {

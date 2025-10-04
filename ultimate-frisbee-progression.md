@@ -101,7 +101,6 @@ This document outlines five progressive skill levels for Ultimate Frisbee player
 - **Full throw arsenal:** Backhand, forehand, and hammer are reliable in game situations
 - **Advanced break throws:** Consistent with inside-out, outside-in, high-release, and low-release breaks
 - **Hucking ability:** Can throw deep shots (hucks) 35+ meters with reasonable accuracy
-- **Touch on hucks:** Can lead receivers and vary disc speed on long throws
 - **Multiple releases:** Can throw from various arm angles and positions
 
 ### Catching
