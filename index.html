@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Frisbee - Winter Season</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <h1>Ultimate Winter Season</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#tournaments">Tournaments</a></li>
+                <li><a href="#stats">Player Stats</a></li>
+                <li><a href="#levels">Skill Levels</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="section">
+        <div class="container">
+            <h2>Welcome to Winter Season</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Club Structure</h3>
+                    <ul>
+                        <li>Money Management</li>
+                        <li>Field Coordination</li>
+                        <li>Tournament Registration</li>
+                        <li>Practice Planning</li>
+                        <li>Equipment Management</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Communication</h3>
+                    <p>Stay connected through:</p>
+                    <ul>
+                        <li>Discord for team chat</li>
+                        <li>Instagram for updates</li>
+                        <li>This website for schedules</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="section">
+        <div class="container">
+            <h2>Practice Schedule</h2>
+            <div class="schedule-grid">
+                <div class="schedule-item">
+                    <h3>Tuesday</h3>
+                    <p><strong>Location:</strong> Gym</p>
+                    <p><strong>Time:</strong> 20:00 (8:00 PM)</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>Thursday</h3>
+                    <p><strong>Location:</strong> Meisnera</p>
+                    <p><strong>Time:</strong> 20:00 (8:00 PM)</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>Saturday</h3>
+                    <p><strong>Location:</strong> Indoor</p>
+                    <p><strong>Time:</strong> 8:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tournaments" class="section">
+        <div class="container">
+            <h2>Tournament Participation</h2>
+            <div id="tournament-list" class="tournaments-grid"></div>
+        </div>
+    </section>
+
+    <section id="stats" class="section">
+        <div class="container">
+            <h2>Player Tournament Statistics</h2>
+            <div class="sort-buttons">
+                <button onclick="sortPlayerStats('total')" class="sort-btn active">Sort by Total</button>
+                <button onclick="sortPlayerStats('confirmed')" class="sort-btn">Sort by Confirmed</button>
+                <button onclick="sortPlayerStats('maybe')" class="sort-btn">Sort by Maybe</button>
+            </div>
+            <div id="player-stats" class="stats-grid"></div>
+        </div>
+    </section>
+
+    <section id="levels" class="section">
+        <div class="container">
+            <h2>Skill Level System</h2>
+            <div id="levels-container" class="levels-grid"></div>
+        </div>
+    </section>
+
+    <script src="navigation.js"></script>
+    <script src="tournaments.js"></script>
+    <script src="levels.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
