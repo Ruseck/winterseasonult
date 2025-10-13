@@ -173,6 +173,7 @@
   "4x name [team 1]": {
     "date": "28-29 Nov 2025",
     "weight": 1,
+    "description": "I believe we gather more teams, will create channel in discord",
     "players": [
       {
         "id": 1,
@@ -205,11 +206,6 @@
         "decision": "confirmed"
       }
     ]
-  },
-  "4x name [team 2]": {
-    "date": "28-29 Nov 2025",
-    "weight": 1,
-    "players": []
   },
   "WLU 14 grudnia ❄️": {
     "date": "14 Dec 2025",

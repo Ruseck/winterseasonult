@@ -76,17 +76,10 @@ function displayTournaments() {
             <div class="tournament-card">
                 <h3>${name}</h3>
                 <p class="tournament-date">${data.date}</p>
-                <textarea placeholder="Add description..." onchange="updateTournamentDescription('${name}', this.value)" class="tournament-description">${data.description || ''}</textarea>
+                <div class="tournament-description-readonly">${data.description || ''}</div>
                 <div class="tournament-stats">
                     <span class="confirmed">${mainPlayers.length} main (${mainMale}M/${mainFemale}F)</span>
                     ${hideBackup ? '' : `<span class="backup">${backupPlayers.length} backup (${backupMale}M/${backupFemale}F)</span>`}
-                </div>
-                <div class="add-player-section">
-                    <select id="player-select-${name.replace(/\s+/g, '')}" class="player-select">
-                        <option value="">Add player...</option>
-                        ${availablePlayers.map(id => `<option value="${id}">${getPlayerGender(id)} ${getPlayerName(id)}</option>`).join('')}
-                    </select>
-                    <button onclick="addPlayerToTournament('${name}', 'backup')" class="add-btn">+</button>
                 </div>
                 <div class="player-list">
                     <h4>Players:</h4>
@@ -95,9 +88,8 @@ function displayTournaments() {
                             <li class="player-item">
                                 <span class="gender-${getPlayerGender(player.id).toLowerCase()}">${getPlayerGender(player.id)}</span>
                                 ${getPlayerName(player.id)}
-                                <span class="status-tag status-${player.status}" onclick="togglePlayerStatus(${player.id}, '${name}')">${player.status}</span>
-                                <span class="decision-tag decision-${player.decision || 'thinking'}" onclick="togglePlayerDecision(${player.id}, '${name}')">${player.decision || 'thinking'}</span>
-                                <button onclick="removePlayer(${player.id}, '${name}')" class="remove-btn">×</button>
+                                <span class="status-tag status-${player.status}">${player.status}</span>
+                                <span class="decision-tag decision-${player.decision || 'thinking'}">${player.decision || 'thinking'}</span>
                             </li>
                         `).join('')}
                     </ul>
@@ -131,18 +123,6 @@ function displayPlayerStats() {
     });
     
     renderPlayerStats();
-}
-
-function addPlayerToTournament(tournament, status) {
-    const selectId = `player-select-${tournament.replace(/\s+/g, '')}`;
-    const select = document.getElementById(selectId);
-    const playerId = parseInt(select.value);
-    
-    if (!playerId) return;
-    
-    tournamentData[tournament].players.push({id: playerId, status: status});
-    displayTournaments();
-    displayPlayerStats();
 }
 
 function removePlayer(playerId, tournament) {
