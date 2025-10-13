@@ -1,121 +1,333 @@
 {
   "Fabrykant": {
     "date": "25-26 Oct 2025",
+    "description": "Szukamy jeszcze dwóch graczy",
     "weight": 1,
-    "confirmed": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8
-    ],
-    "backup": []
+    "players": [
+      {
+        "id": 29,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 4,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 3,
+        "status": "main",
+        "decision": "confirmed"
+      },
+      {
+        "id": 27,
+        "status": "main",
+        "decision": "confirmed"
+      },
+      {
+        "id": 2,
+        "status": "main",
+        "decision": "confirmed"
+      },
+      {
+        "id": 30,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 6,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 7,
+        "status": "main",
+        "decision": "confirmed"
+      },
+      {
+        "id": 8,
+        "status": "main",
+        "decision": "confirmed"
+      }
+    ]
   },
   "Bearlake": {
     "date": "8-9 Nov 2025",
     "weight": 1,
-    "confirmed": [
-      1,
-      2,
-      3,
-      9,
-      10,
-      15,
-      11,
-      12,
-      13,
-      14
+    "players": [
+      {
+        "id": 10,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 9,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 3,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 16,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 1,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 2,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 14,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 13,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 12,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 11,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 15,
+        "status": "backup",
+        "decision": "thinking"
+      },
+      {
+        "id": 7,
+        "status": "backup",
+        "decision": "thinking"
+      },
+      {
+        "id": 17,
+        "status": "backup",
+        "decision": "thinking"
+      }
     ],
-    "backup": [
-      16,
-      17,
-      7
-    ]
+    "description": "Termin potwierdzenia do 17 października"
   },
-  "4x name": {
+  "WLU 23 listopada 🍃": {
+    "date": "23 Nov 2025",
+    "weight": 1,
+    "players": [
+      {
+        "id": 16,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 20,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 26,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 25,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 12,
+        "status": "main",
+        "decision": "confirmed"
+      },
+      {
+        "id": 23,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 7,
+        "status": "main",
+        "decision": "confirmed"
+      },
+      {
+        "id": 2,
+        "status": "backup",
+        "decision": "thinking"
+      }
+    ],
+    "description": "3 games"
+  },
+  "4x name [team 1]": {
     "date": "28-29 Nov 2025",
     "weight": 1,
-    "confirmed": [],
-    "backup": []
-  },
-  "Winter Unlished": {
-    "date": "17-18 Jan 2026",
-    "weight": 1,
-    "confirmed": [
-      2,
-      16,
-      1,
-      10,
-      4,
-      20,
-      11,
-      12,
-      18,
-      22
-    ],
-    "backup": [
-      15,
-      21,
-      19,
-      3,
-      7,
-      17,
-      6,
-      23,
-      24
+    "players": [
+      {
+        "id": 1,
+        "status": "main",
+        "decision": "confirmed"
+      },
+      {
+        "id": 2,
+        "status": "main",
+        "decision": "confirmed"
+      },
+      {
+        "id": 25,
+        "status": "main",
+        "decision": "confirmed"
+      },
+      {
+        "id": 14,
+        "status": "main",
+        "decision": "confirmed"
+      },
+      {
+        "id": 13,
+        "status": "main",
+        "decision": "confirmed"
+      },
+      {
+        "id": 11,
+        "status": "main",
+        "decision": "confirmed"
+      }
     ]
   },
-  "Pomerania Power": {
-    "date": "Unknown",
+  "4x name [team 2]": {
+    "date": "28-29 Nov 2025",
     "weight": 1,
-    "confirmed": [
-      2,
-      1,
-      10,
-      25,
-      4,
-      16,
-      18,
-      11,
-      13,
-      12
-    ],
-    "backup": [
-      20,
-      19,
-      15,
-      21,
-      3,
-      6,
-      24,
-      23,
-      7,
-      17,
-      22
-    ]
+    "players": []
   },
-  "WLU": {
+  "WLU 14 grudnia ❄️": {
+    "date": "14 Dec 2025",
+    "weight": 1,
+    "players": [
+      {
+        "id": 16,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 20,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 21,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 26,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 6,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 11,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 28,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 2,
+        "status": "backup",
+        "decision": "thinking"
+      }
+    ],
+    "description": "Szukamy dwóch-trzech kolejnych graczy\n4 games"
+  },
+  "WLU 8 lutego 🌲": {
     "date": "Unknown (3 rounds)",
-    "weight": 3,
-    "confirmed": [
-      16,
-      21,
-      5,
-      9,
-      25,
-      26,
-      3,
-      20,
-      19
+    "weight": 1,
+    "players": [
+      {
+        "id": 16,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 20,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 21,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 26,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 25,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 6,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 7,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 18,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 28,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 2,
+        "status": "backup",
+        "decision": "thinking"
+      },
+      {
+        "id": 14,
+        "status": "backup",
+        "decision": "thinking"
+      },
+      {
+        "id": 12,
+        "status": "backup",
+        "decision": "thinking"
+      },
+      {
+        "id": 22,
+        "status": "backup",
+        "decision": "thinking"
+      }
     ],
-    "backup": [
-      10,
-      4,
-      2,
-      1
-    ]
+    "description": "4 games"
   }
 }

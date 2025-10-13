@@ -1,5 +1,13 @@
 let tournamentData = {};
 let playersData = {};
+let hideBackup = false;
+
+function toggleBackup() {
+    hideBackup = !hideBackup;
+    const btn = document.getElementById('hide-backup-btn');
+    btn.textContent = hideBackup ? 'Show Backup' : 'Hide Backup';
+    displayTournaments();
+}
 
 async function loadTournamentData() {
     try {
@@ -24,38 +32,79 @@ function getPlayerGender(id) {
     return playersData[id]?.gender || 'U';
 }
 
+function sortPlayersByGenderAndName(players) {
+    return players.sort((a, b) => {
+        // Sort by status first (main before backup)
+        if (a.status !== b.status) {
+            return a.status === 'main' ? -1 : 1;
+        }
+        
+        const genderA = getPlayerGender(a.id);
+        const genderB = getPlayerGender(b.id);
+        const nameA = getPlayerName(a.id);
+        const nameB = getPlayerName(b.id);
+        
+        // Then sort by gender (M before F)
+        if (genderA !== genderB) {
+            return genderA === 'M' ? -1 : 1;
+        }
+        
+        // Finally sort by name
+        return nameA.localeCompare(nameB);
+    });
+}
+
 function displayTournaments() {
     const container = document.getElementById('tournament-list');
     container.innerHTML = Object.entries(tournamentData).map(([name, data]) => {
-        const confirmedMale = data.confirmed.filter(id => getPlayerGender(id) === 'M').length;
-        const confirmedFemale = data.confirmed.filter(id => getPlayerGender(id) === 'F').length;
-        const backupMale = data.backup.filter(id => getPlayerGender(id) === 'M').length;
-        const backupFemale = data.backup.filter(id => getPlayerGender(id) === 'F').length;
+        const mainPlayers = data.players.filter(p => p.status === 'main');
+        const backupPlayers = data.players.filter(p => p.status === 'backup');
+        
+        const mainMale = mainPlayers.filter(p => getPlayerGender(p.id) === 'M').length;
+        const mainFemale = mainPlayers.filter(p => getPlayerGender(p.id) === 'F').length;
+        const backupMale = backupPlayers.filter(p => getPlayerGender(p.id) === 'M').length;
+        const backupFemale = backupPlayers.filter(p => getPlayerGender(p.id) === 'F').length;
+        
+        const playersToShow = hideBackup ? mainPlayers : data.players;
+        const sortedPlayers = sortPlayersByGenderAndName(playersToShow);
+        
+        // Get available players (not in this tournament)
+        const usedPlayerIds = data.players.map(p => p.id);
+        const availablePlayers = Object.keys(playersData).filter(id => !usedPlayerIds.includes(parseInt(id)));
         
         return `
             <div class="tournament-card">
                 <h3>${name}</h3>
                 <p class="tournament-date">${data.date}</p>
+                <textarea placeholder="Add description..." onchange="updateTournamentDescription('${name}', this.value)" class="tournament-description">${data.description || ''}</textarea>
                 <div class="tournament-stats">
-                    <span class="confirmed">${data.confirmed.length} confirmed (${confirmedMale}M/${confirmedFemale}F)</span>
-                    <span class="backup">${data.backup.length} backup (${backupMale}M/${backupFemale}F)</span>
+                    <span class="confirmed">${mainPlayers.length} main (${mainMale}M/${mainFemale}F)</span>
+                    ${hideBackup ? '' : `<span class="backup">${backupPlayers.length} backup (${backupMale}M/${backupFemale}F)</span>`}
                 </div>
-                <div class="player-lists">
-                    <div class="confirmed-list">
-                        <h4>Confirmed:</h4>
-                        <ul class="drop-zone" data-tournament="${name}" data-status="confirmed">${data.confirmed.map(id => `<li draggable="true" data-player-id="${id}" class="draggable-player"><span class="gender-${getPlayerGender(id).toLowerCase()}">${getPlayerGender(id)}</span> ${getPlayerName(id)}</li>`).join('')}</ul>
-                    </div>
-                    <div class="backup-list">
-                        <h4>Backup:</h4>
-                        <ul class="drop-zone" data-tournament="${name}" data-status="backup">${data.backup.map(id => `<li draggable="true" data-player-id="${id}" class="draggable-player"><span class="gender-${getPlayerGender(id).toLowerCase()}">${getPlayerGender(id)}</span> ${getPlayerName(id)}</li>`).join('')}</ul>
-                    </div>
+                <div class="add-player-section">
+                    <select id="player-select-${name.replace(/\s+/g, '')}" class="player-select">
+                        <option value="">Add player...</option>
+                        ${availablePlayers.map(id => `<option value="${id}">${getPlayerGender(id)} ${getPlayerName(id)}</option>`).join('')}
+                    </select>
+                    <button onclick="addPlayerToTournament('${name}', 'backup')" class="add-btn">+</button>
                 </div>
-                <button onclick="saveTournamentData()" class="save-btn">Save Changes</button>
+                <div class="player-list">
+                    <h4>Players:</h4>
+                    <ul class="single-player-list">
+                        ${sortedPlayers.map(player => `
+                            <li class="player-item">
+                                <span class="gender-${getPlayerGender(player.id).toLowerCase()}">${getPlayerGender(player.id)}</span>
+                                ${getPlayerName(player.id)}
+                                <span class="status-tag status-${player.status}" onclick="togglePlayerStatus(${player.id}, '${name}')">${player.status}</span>
+                                <span class="decision-tag decision-${player.decision || 'thinking'}" onclick="togglePlayerDecision(${player.id}, '${name}')">${player.decision || 'thinking'}</span>
+                                <button onclick="removePlayer(${player.id}, '${name}')" class="remove-btn">×</button>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
             </div>
         `;
     }).join('');
-    
-    setupDragAndDrop();
 }
 
 let currentPlayerStats = {};
@@ -72,62 +121,56 @@ function displayPlayerStats() {
     // Count tournament participation
     Object.values(tournamentData).forEach(tournament => {
         const weight = tournament.weight || 1;
-        tournament.confirmed.forEach(id => currentPlayerStats[id].confirmed += weight);
-        tournament.backup.forEach(id => currentPlayerStats[id].backup += weight);
+        tournament.players.forEach(player => {
+            if (player.status === 'main') {
+                currentPlayerStats[player.id].confirmed += weight;
+            } else if (player.status === 'backup') {
+                currentPlayerStats[player.id].backup += weight;
+            }
+        });
     });
     
     renderPlayerStats();
 }
 
-function setupDragAndDrop() {
-    const draggables = document.querySelectorAll('.draggable-player');
-    const dropZones = document.querySelectorAll('.drop-zone');
+function addPlayerToTournament(tournament, status) {
+    const selectId = `player-select-${tournament.replace(/\s+/g, '')}`;
+    const select = document.getElementById(selectId);
+    const playerId = parseInt(select.value);
     
-    draggables.forEach(draggable => {
-        draggable.addEventListener('dragstart', e => {
-            e.dataTransfer.setData('text/plain', e.target.dataset.playerId);
-            e.target.classList.add('dragging');
-        });
-        
-        draggable.addEventListener('dragend', e => {
-            e.target.classList.remove('dragging');
-        });
-    });
+    if (!playerId) return;
     
-    dropZones.forEach(zone => {
-        zone.addEventListener('dragover', e => {
-            e.preventDefault();
-            zone.classList.add('drag-over');
-        });
-        
-        zone.addEventListener('dragleave', e => {
-            zone.classList.remove('drag-over');
-        });
-        
-        zone.addEventListener('drop', e => {
-            e.preventDefault();
-            zone.classList.remove('drag-over');
-            
-            const playerId = parseInt(e.dataTransfer.getData('text/plain'));
-            const tournament = zone.dataset.tournament;
-            const newStatus = zone.dataset.status;
-            
-            movePlayer(playerId, tournament, newStatus);
-        });
-    });
-}
-
-function movePlayer(playerId, tournament, newStatus) {
-    // Remove player from all lists in this tournament
-    tournamentData[tournament].confirmed = tournamentData[tournament].confirmed.filter(id => id !== playerId);
-    tournamentData[tournament].backup = tournamentData[tournament].backup.filter(id => id !== playerId);
-    
-    // Add to new list
-    tournamentData[tournament][newStatus].push(playerId);
-    
-    // Refresh display
+    tournamentData[tournament].players.push({id: playerId, status: status});
     displayTournaments();
     displayPlayerStats();
+}
+
+function removePlayer(playerId, tournament) {
+    tournamentData[tournament].players = tournamentData[tournament].players.filter(p => p.id !== playerId);
+    
+    displayTournaments();
+    displayPlayerStats();
+}
+
+function togglePlayerDecision(playerId, tournament) {
+    const player = tournamentData[tournament].players.find(p => p.id === playerId);
+    if (player) {
+        const decisions = ['thinking', 'confirmed', 'declined'];
+        const currentIndex = decisions.indexOf(player.decision || 'thinking');
+        const nextIndex = (currentIndex + 1) % decisions.length;
+        player.decision = decisions[nextIndex];
+        displayTournaments();
+        displayPlayerStats();
+    }
+}
+
+function togglePlayerStatus(playerId, tournament) {
+    const player = tournamentData[tournament].players.find(p => p.id === playerId);
+    if (player) {
+        player.status = player.status === 'main' ? 'backup' : 'main';
+        displayTournaments();
+        displayPlayerStats();
+    }
 }
 
 function saveTournamentData() {
@@ -165,11 +208,46 @@ function renderPlayerStats() {
     container.innerHTML = sortedStats.map(([id, stats]) => `
         <div class="player-stat-card">
             <h4><span class="gender-${getPlayerGender(id).toLowerCase()}">${getPlayerGender(id)}</span> ${getPlayerName(id)}</h4>
-            <div class="stat-numbers">
+            <div class="stat-numbers" onclick="showPlayerTournaments(${id}, '${getPlayerName(id)}')">
                 <span class="confirmed-stat">${stats.confirmed} confirmed</span>
                 <span class="backup-stat">${stats.backup} backup</span>
                 <span class="total-stat">${stats.confirmed + stats.backup} total</span>
             </div>
         </div>
     `).join('');
+}
+
+function showPlayerTournaments(playerId, playerName) {
+    const tournaments = getPlayerTournamentsList(playerId);
+    const modal = document.createElement('div');
+    modal.className = 'tournament-modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <h3>${playerName} - Tournaments</h3>
+            <div class="tournaments-list">${tournaments}</div>
+            <button onclick="this.parentElement.parentElement.remove()" class="close-btn">Close</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function updateTournamentDescription(tournament, description) {
+    tournamentData[tournament].description = description;
+}
+
+function getPlayerTournamentsList(playerId) {
+    const playerTournaments = [];
+    Object.entries(tournamentData).forEach(([name, data]) => {
+        const player = data.players.find(p => p.id == playerId);
+        if (player) {
+            let statusClass = '';
+            if (player.status === 'backup') statusClass = 'backup-tournament';
+            else if (player.status === 'thinking') statusClass = 'thinking-tournament';
+            else if (player.status === 'decline') statusClass = 'decline-tournament';
+            else if (player.status === 'confirmed') statusClass = 'confirmed-tournament';
+            
+            playerTournaments.push(`<div class="tournament-item ${statusClass}">${name} (${player.status})</div>`);
+        }
+    });
+    return playerTournaments.length > 0 ? playerTournaments.join('') : '<div class="tournament-item">No tournaments</div>';
 }

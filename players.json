@@ -6,7 +6,7 @@
   "5": { "name": "Dawid Bastek", "gender": "M" },
   "6": { "name": "Ilona Jankowska", "gender": "F" },
   "7": { "name": "Lizaveta Yemialyanava", "gender": "F" },
-  "8": { "name": "Masha", "gender": "F" },
+  "8": { "name": "Masha (pickup)", "gender": "F" },
   "9": { "name": "Bartłomiej Szostek", "gender": "M" },
   "10": { "name": "Bartłomiej Skopiński", "gender": "M" },
   "11": { "name": "Karolina Gliniecka", "gender": "F" },
@@ -24,5 +24,9 @@
   "23": { "name": "Katarzyna Komorowska-Niemczyk", "gender": "F" },
   "24": { "name": "Agata Żuk", "gender": "F" },
   "25": { "name": "Tomasz Bartniczak", "gender": "M" },
-  "26": { "name": "Scott Little", "gender": "M" }
+  "26": { "name": "Scott Little", "gender": "M" },
+  "27": { "name": "Oleg (pickup RJP)", "gender": "M" },
+  "28": { "name": "Marta Grzybek", "gender": "F" },
+  "29": { "name": ">>!!searching!!<<", "gender": "M" },
+  "30": { "name": ">>!!searching!!<<", "gender": "F" }
 }

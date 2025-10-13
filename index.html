@@ -9,41 +9,34 @@
 <body>
     <nav>
         <div class="nav-container">
-            <h1>Ultimate Winter Season</h1>
+            <h1>Ultimatum Winter Season</h1>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#schedule">Schedule</a></li>
                 <li><a href="#tournaments">Tournaments</a></li>
-                <li><a href="#stats">Player Stats</a></li>
+                <li><a href="#schedule">Schedule</a></li>
                 <li><a href="#levels">Skill Levels</a></li>
+                <li><a href="#stats">Player Stats</a></li>
             </ul>
         </div>
     </nav>
 
-    <section id="home" class="section">
+    <section id="tournaments" class="section">
         <div class="container">
-            <h2>Welcome to Winter Season</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Club Structure</h3>
-                    <ul>
-                        <li>Money Management</li>
-                        <li>Field Coordination</li>
-                        <li>Tournament Registration</li>
-                        <li>Practice Planning</li>
-                        <li>Equipment Management</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Communication</h3>
-                    <p>Stay connected through:</p>
-                    <ul>
-                        <li>Discord for team chat</li>
-                        <li>Instagram for updates</li>
-                        <li>This website for schedules</li>
-                    </ul>
-                </div>
+            <h2>Tournament Participation</h2>
+            <div class="description-box">
+                <p><strong>Status Legend:</strong></p>
+                <ul>
+                    <li><span class="status-tag status-main">main</span> - Player will go to tournament</li>
+                    <li><span class="status-tag status-backup">backup</span> - Player will not go, but available as next option if someone can't go</li>
+                    <li><span class="decision-tag decision-confirmed">confirmed</span> - Player confirmed participation</li>
+                    <li><span class="decision-tag decision-thinking">thinking</span> - Player still deciding</li>
+                    <li><span class="decision-tag decision-declined">declined</span> - Player declined participation</li>
+                </ul>
             </div>
+            <div class="tournament-controls">
+                <button onclick="toggleBackup()" id="hide-backup-btn" class="sort-btn">Hide Backup</button>
+                <button onclick="saveTournamentData()" class="sort-btn">Save Changes</button>
+            </div>
+            <div id="tournament-list" class="tournaments-grid"></div>
         </div>
     </section>
 
@@ -70,10 +63,10 @@
         </div>
     </section>
 
-    <section id="tournaments" class="section">
+    <section id="levels" class="section">
         <div class="container">
-            <h2>Tournament Participation</h2>
-            <div id="tournament-list" class="tournaments-grid"></div>
+            <h2>Skill Level System</h2>
+            <div id="levels-container" class="levels-grid"></div>
         </div>
     </section>
 
@@ -86,13 +79,6 @@
                 <button onclick="sortPlayerStats('backup')" class="sort-btn">Sort by Backup</button>
             </div>
             <div id="player-stats" class="stats-grid"></div>
-        </div>
-    </section>
-
-    <section id="levels" class="section">
-        <div class="container">
-            <h2>Skill Level System</h2>
-            <div id="levels-container" class="levels-grid"></div>
         </div>
     </section>
 
