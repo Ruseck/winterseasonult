@@ -7,12 +7,12 @@
       {
         "id": 29,
         "status": "main",
-        "decision": "thinking"
+        "decision": "confirmed"
       },
       {
         "id": 4,
         "status": "main",
-        "decision": "thinking"
+        "decision": "confirmed"
       },
       {
         "id": 3,
@@ -32,12 +32,12 @@
       {
         "id": 30,
         "status": "main",
-        "decision": "thinking"
+        "decision": "confirmed"
       },
       {
         "id": 6,
         "status": "main",
-        "decision": "thinking"
+        "decision": "confirmed"
       },
       {
         "id": 7,
@@ -58,57 +58,62 @@
       {
         "id": 10,
         "status": "main",
-        "decision": "thinking"
+        "decision": "confirmed"
       },
       {
         "id": 9,
         "status": "main",
-        "decision": "thinking"
+        "decision": "confirmed"
       },
       {
         "id": 3,
+        "status": "backup",
+        "decision": "declined"
+      },
+      {
+        "id": 5,
         "status": "main",
-        "decision": "thinking"
+        "decision": "confirmed"
       },
       {
         "id": 16,
-        "status": "main",
-        "decision": "thinking"
+        "status": "backup",
+        "decision": "declined"
       },
       {
         "id": 1,
         "status": "main",
-        "decision": "thinking"
+        "decision": "confirmed"
       },
       {
         "id": 2,
         "status": "main",
-        "decision": "thinking"
+        "decision": "confirmed"
       },
       {
         "id": 14,
-        "status": "main",
-        "decision": "thinking"
+        "status": "backup",
+        "decision": "declined"
       },
       {
         "id": 13,
         "status": "main",
-        "decision": "thinking"
+        "decision": "confirmed"
       },
       {
         "id": 12,
         "status": "main",
-        "decision": "thinking"
+        "decision": "confirmed"
       },
       {
         "id": 11,
         "status": "main",
-        "decision": "thinking"
+        "decision": "confirmed"
       },
       {
         "id": 15,
         "status": "backup",
-        "decision": "thinking"
+        "decision": "declined"
       },
       {
         "id": 7,
@@ -117,8 +122,8 @@
       },
       {
         "id": 17,
-        "status": "backup",
-        "decision": "thinking"
+        "status": "main",
+        "decision": "confirmed"
       }
     ],
     "description": "Termin potwierdzenia do 17 października"
@@ -143,12 +148,22 @@
         "decision": "thinking"
       },
       {
+        "id": 1,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 3,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
         "id": 25,
         "status": "main",
         "decision": "thinking"
       },
       {
-        "id": 12,
+        "id": 18,
         "status": "main",
         "decision": "confirmed"
       },
@@ -253,77 +268,5 @@
       }
     ],
     "description": "Szukamy dwóch-trzech kolejnych graczy\n4 games"
-  },
-  "WLU 8 lutego 🌲": {
-    "date": "Unknown (3 rounds)",
-    "weight": 1,
-    "players": [
-      {
-        "id": 16,
-        "status": "main",
-        "decision": "thinking"
-      },
-      {
-        "id": 20,
-        "status": "main",
-        "decision": "thinking"
-      },
-      {
-        "id": 21,
-        "status": "main",
-        "decision": "thinking"
-      },
-      {
-        "id": 26,
-        "status": "main",
-        "decision": "thinking"
-      },
-      {
-        "id": 25,
-        "status": "main",
-        "decision": "thinking"
-      },
-      {
-        "id": 6,
-        "status": "main",
-        "decision": "thinking"
-      },
-      {
-        "id": 7,
-        "status": "main",
-        "decision": "thinking"
-      },
-      {
-        "id": 18,
-        "status": "main",
-        "decision": "thinking"
-      },
-      {
-        "id": 28,
-        "status": "main",
-        "decision": "thinking"
-      },
-      {
-        "id": 2,
-        "status": "backup",
-        "decision": "thinking"
-      },
-      {
-        "id": 14,
-        "status": "backup",
-        "decision": "thinking"
-      },
-      {
-        "id": 12,
-        "status": "backup",
-        "decision": "thinking"
-      },
-      {
-        "id": 22,
-        "status": "backup",
-        "decision": "thinking"
-      }
-    ],
-    "description": "4 games"
   }
 }
