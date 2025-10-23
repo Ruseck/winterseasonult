@@ -227,12 +227,22 @@
     "weight": 1,
     "players": [
       {
-        "id": 16,
+        "id": 20,
         "status": "main",
         "decision": "thinking"
       },
       {
-        "id": 20,
+        "id": 19,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 3,
+        "status": "main",
+        "decision": "thinking"
+      },
+      {
+        "id": 1,
         "status": "main",
         "decision": "thinking"
       },
@@ -252,7 +262,7 @@
         "decision": "thinking"
       },
       {
-        "id": 11,
+        "id": 12,
         "status": "main",
         "decision": "thinking"
       },
