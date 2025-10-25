@@ -193,10 +193,6 @@ h2 {
 .level-4 { background: linear-gradient(135deg, #6bad4b, #5a9e42); }
 .level-5 { background: linear-gradient(135deg, #F44336, #D32F2F); }
 
-.levels-grid {
-    display: block;
-}
-
 .level-card {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
