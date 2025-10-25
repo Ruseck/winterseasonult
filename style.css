@@ -234,7 +234,6 @@ h2 {
 }
 
 .level-content {
-    display: none;
     padding: 0 1.5rem 1.5rem;
     background: white;
 }
@@ -578,10 +577,6 @@ h2 {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-#levels {
-    display: none;
 }
 
 .close-btn {
